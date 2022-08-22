@@ -1,1 +1,1 @@
-Sistema
+Sistema {{session('client')['email']}}
