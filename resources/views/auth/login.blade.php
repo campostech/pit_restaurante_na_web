@@ -3,8 +3,8 @@
 <section class="form-main">
     <div>
         <div class="container">
-            <div class="row">
-            <div class="col-md-12">
+            <div class="row justify-content-center">
+            <div class="col-md-5">
                 <form action="{{ route('user.signin') }}" method="POST" class="form-sub-main">
                     @csrf
                     <div class="col-md-12 text-center">
