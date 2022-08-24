@@ -162,7 +162,38 @@ Sistema {{session('client')['email']}}
         element.addEventListener("change", readFile);
         element.parentNode.querySelector("a[href='#modal']").addEventListener("click", previewImg);
     }
-    
+
+    function addProduct() {
+        let model = 
+        `<div class="col-md-4 pb-4 product">
+            <div class="card">
+                <div class="card-body text-center">
+                    <input class="card-title" cat="nome" placeholder="Nome"  required/>
+                    <textarea class="card-text w-100 mb-3" cat="description" required placeholder="Descrição do Produto"></textarea>
+                    <input class="card-title" cat="category" placeholder="Categoria"  required/>
+                    <button type="button" onclick="removeProduct(event.target)" class="btn btn-danger">Remover</button>
+                </div>
+            </div>
+        </div>`;
+
+        $("#products").append(model);
+        reorderProducts();
+    }
+
+    function reorderProducts(){
+        $(".product").each(function( i ) {
+            $(this).find("[cat]").each( function (c) {
+                this.name = "pdts["+i+"]['"+$(this).attr("cat")+"']";
+            });
+        });
+    }
+
+    function removeProduct(evt) {
+        if (confirm("Realmente deseja remover o produto? (Essa ação não pode ser desfeita)")) {
+            evt.parentNode.parentNode.parentNode.remove();
+            reorderProducts();
+        }
+    }
     window.onbeforeunload = function(e) {
         return '';
     };
