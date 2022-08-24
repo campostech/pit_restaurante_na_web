@@ -117,18 +117,18 @@ Sistema {{session('client')['email']}}
         <div class="row">
             <div class="mb-3 col-md-4">
               <label for="opinion0">Opinião 1</label>
-              <input name="opinion[0][n]" type="text" class="form-control" placeholder="Fulano" required>
-              <input name="opinion[0][o]" type="text" class="form-control" id="opinion0" placeholder="Muito bom, excelente" required>
+              <input name="opinions[0][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinions[0][o]" type="text" class="form-control" id="opinion0" placeholder="Muito bom, excelente" required>
             </div>
             <div class="mb-3 col-md-4">
               <label for="opinion1">Opinião 2</label>
-              <input name="opinion[1][n]" type="text" class="form-control" placeholder="Fulano" required>
-              <input name="opinion[1][o]" type="text" class="form-control" id="opinion1" placeholder="Muito bom, excelente" required>
+              <input name="opinions[1][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinions[1][o]" type="text" class="form-control" id="opinion1" placeholder="Muito bom, excelente" required>
             </div>
             <div class="mb-3 col-md-4">
               <label for="opinion2">Opinião 3</label>
-              <input name="opinion[2][n]" type="text" class="form-control" placeholder="Fulano" required>
-              <input name="opinion[2][o]" type="text" class="form-control" id="opinion2" placeholder="Muito bom, excelente" required>
+              <input name="opinions[2][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinions[2][o]" type="text" class="form-control" id="opinion2" placeholder="Muito bom, excelente" required>
             </div>
         </div>
 
@@ -138,7 +138,10 @@ Sistema {{session('client')['email']}}
           <label class="custom-control-label" for="check">Concordo com todos os term</label>
         </div>
         <hr class="mb-4"> --}}
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Gerar</button>
+        <div class="row">
+            <button class="btn btn-secondary btn-lg btn-block col-md-6" type="button" onclick="preview()">Visualizar</button>
+            <button class="btn btn-primary btn-lg btn-block col-md-6 m-0" type="submit">Gerar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -221,5 +224,18 @@ Sistema {{session('client')['email']}}
         });
     }
     autofill();
+    
+    function preview() {
+        let pForm = $('#form').clone();
+        $(pForm).find("[required]").each(function () {
+            $(this).removeAttr("required");
+        });
+        pForm.attr("id", "previewForm");
+        pForm.attr("target", "print_popup");
+        pForm.attr("onsubmit", "window.open('about:blank','print_popup','width=1000,height=800');");
+        $("body").append(pForm);
+        $("#previewForm").submit();
+        $("#previewForm").remove();
+    }
   </script>
 @endsection
