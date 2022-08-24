@@ -13,5 +13,6 @@ Route::get('/sair',  [UserController::class, 'logout'])->name('user.logout');
 
 Route::group(['middleware' => ClientMiddleware::class], function(){
     Route::get('/',  [SystemController::class, 'create'])->name('system');
+    Route::post('/gerar',  [SystemController::class, 'convertTemplate'])->name('system.generate');
 });
 

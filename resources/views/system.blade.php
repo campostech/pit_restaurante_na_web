@@ -16,65 +16,66 @@ Sistema {{session('client')['email']}}
     <h2>Criação de Website Restaurante</h2>
     <p class="lead">Preencha os campos abaixo e monte o seu site com a sua marca, cores e detalhes</p>
   </div>
-
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h4 class="mb-3">Informações do Cabeçalho</h4>
-      <form class="needs-validation">
-        <div class="row">
+      <form id="form" class="needs-validation" method="POST" action="{{route('system.generate')}}">
+        @csrf
+       <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="name">Nome da Empresa</label>
-                <input type="text" class="form-control" id="name" placeholder="Restaurante XPTO" value="" required>
+                <input name="name" type="text" class="form-control" id="name" placeholder="Restaurante XPTO" value="" required>
             </div>
             <div class="col-md-6 mb-3 row">
                 <label for="banner" class="col-md-12">Banner</label>
                 <a href="#modal" class="col-md-2">
                     <img src="" alt="" height="30px" id="banner-img">
                 </a>
-                <input type="file" class="col-md-10" id="banner" required>
+                <input type="text" name="banner" class="d-none" required>
+                <input type="file" class="col-md-10" id="banner">
             </div>
             <div class="mb-3 col-md-6">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="minhaempresa@email.com" required>
+              <input name="email" type="email" class="form-control" id="email" placeholder="minhaempresa@email.com" required>
             </div>
             <div class="mb-3 col-md-3">
               <label for="phone">Telefone</label>
-              <input type="text" class="form-control" id="phone" placeholder="(31) 99999-9999" required>
+              <input name="phone" type="text" class="form-control" id="phone" placeholder="(31) 99999-9999" required>
             </div>
             <div class="mb-3 col-md-3">
               <label for="whatsapp">Whatsapp</label>
-              <input type="text" class="form-control" id="whatsapp" placeholder="(31) 99999-9999" required>
+              <input name="whatsapp" type="text" class="form-control" id="whatsapp" placeholder="(31) 99999-9999" required>
             </div>
         </div>
 
         <div class="mb-3">
           <label for="address">Endereço</label>
-          <input type="text" class="form-control" id="address" placeholder="Castelo Branco, 423, Matozinhos - MG" required>
+          <input name="address" type="text" class="form-control" id="address" placeholder="Castelo Branco, 423, Matozinhos - MG" required>
         </div>
 
         <div class="mb-3">
           <label for="maps">Link do Maps</label>
-          <input type="text" class="form-control" id="maps" placeholder="https://maps.google.com/" required>
+          <input name="maps" type="text" class="form-control" id="maps" placeholder="https://maps.google.com/" required>
         </div>
 
         <div class="row">
             <div class="mb-3 col-md-4">
               <label for="fundation">Fundação</label>
-              <input type="text" class="form-control" id="fundation" placeholder="Fundada em 2022" required>
+              <input name="fundation" type="text" class="form-control" id="fundation" placeholder="Fundada em 2022" required>
             </div>
             <div class="mb-3 col-md-4">
               <label for="objective">Objetivo</label>
-              <input type="text" class="form-control" id="objective" placeholder="Buscar sempre agradar os clientes" required>
+              <input name="objective" type="text" class="form-control" id="objective" placeholder="Buscar sempre agradar os clientes" required>
             </div>
             <div class="mb-3 col-md-4">
               <label for="effort">Empenho</label>
-              <input type="text" class="form-control" id="effort" placeholder="Melhorar sempre é o nosso empenho" required>
+              <input name="effort" type="text" class="form-control" id="effort" placeholder="Melhorar sempre é o nosso empenho" required>
             </div>
         </div>
 
         <div class="mb-3">
           <label for="about">Sobre a Empresa</label>
-          <textarea class="form-control" id="about" required></textarea>
+          <textarea name="about" class="form-control" id="about" required></textarea>
         </div>
 
         <div class="mb-3">
@@ -89,53 +90,54 @@ Sistema {{session('client')['email']}}
                 <a href="#modal" class="col-md-2">
                     <img src="" alt="" height="30px" id="favicon-img">
                 </a>
-                <input type="file" class="col-md-10" id="favicon" required>
+                <input type="text" name="favicon" class="d-none" required>
+                <input type="file" class="col-md-10" id="favicon">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="mainColor" class="col-md-12">Cor Principal</label>
-                <input type="color" id="mainColor" class="form-group"  required/>
+                <input name="mainColor" type="color" id="mainColor" class="form-group"  required/>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="textColor" class="col-md-12">Cor Secundaria</label>
-                <input type="color" id="textColor" class="form-group"  required/>
+                <input name="textColor" type="color" id="textColor" class="form-group"  required/>
             </div>
         </div>
 
         <div class="mb-3 row">
             <div class="col-md-6">
               <label for="info">Informações da Empresa</label>
-              <textarea class="form-control" id="info" required></textarea>
+              <textarea name="info" class="form-control" id="info" required></textarea>
             </div>
             <div class="col-md-6">
               <label for="hours">Funcionamento</label>
-              <textarea class="form-control" id="hours" required></textarea>
+              <textarea name="hours" class="form-control" id="hours" required></textarea>
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-md-4">
-              <label for="opnion1">Opinião 1</label>
-              <input type="text" class="form-control" placeholder="Fulano" required>
-              <input type="text" class="form-control" id="opnion1" placeholder="Muito bom, excelente" required>
+              <label for="opinion0">Opinião 1</label>
+              <input name="opinion[0][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinion[0][o]" type="text" class="form-control" id="opinion0" placeholder="Muito bom, excelente" required>
             </div>
             <div class="mb-3 col-md-4">
-              <label for="opnion2">Opinião 2</label>
-              <input type="text" class="form-control" placeholder="Fulano" required>
-              <input type="text" class="form-control" id="opnion2" placeholder="Muito bom, excelente" required>
+              <label for="opinion1">Opinião 2</label>
+              <input name="opinion[1][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinion[1][o]" type="text" class="form-control" id="opinion1" placeholder="Muito bom, excelente" required>
             </div>
             <div class="mb-3 col-md-4">
-              <label for="opnion3">Opinião 3</label>
-              <input type="text" class="form-control" placeholder="Fulano" required>
-              <input type="text" class="form-control" id="opnion3" placeholder="Muito bom, excelente" required>
+              <label for="opinion2">Opinião 3</label>
+              <input name="opinion[2][n]" type="text" class="form-control" placeholder="Fulano" required>
+              <input name="opinion[2][o]" type="text" class="form-control" id="opinion2" placeholder="Muito bom, excelente" required>
             </div>
         </div>
 
         <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="check">
-          <label class="custom-control-label" for="check">Check</label>
+        {{-- <div class="custom-control custom-checkbox">
+          <input name="check" type="checkbox" class="custom-control-input" id="check" required>
+          <label class="custom-control-label" for="check">Concordo com todos os term</label>
         </div>
-        <hr class="mb-4">
+        <hr class="mb-4"> --}}
         <button class="btn btn-primary btn-lg btn-block" type="submit">Gerar</button>
       </form>
     </div>
@@ -154,6 +156,7 @@ Sistema {{session('client')['email']}}
             reader.onerror = error => reject(error);
         }).then((data) => {
             document.getElementById(this.id+ "-img").src = data;
+            document.getElementsByName(this.id)[0].value = data;
         });
     }
     let inputsFile = document.querySelectorAll("input[type=file]");
@@ -170,6 +173,7 @@ Sistema {{session('client')['email']}}
                 <div class="card-body text-center">
                     <input class="card-title" cat="nome" placeholder="Nome"  required/>
                     <textarea class="card-text w-100 mb-3" cat="description" required placeholder="Descrição do Produto"></textarea>
+                    <input type="number" class="card-title" cat="price" placeholder="Preço"  required/>
                     <input class="card-title" cat="category" placeholder="Categoria"  required/>
                     <button type="button" onclick="removeProduct(event.target)" class="btn btn-danger">Remover</button>
                 </div>
@@ -183,7 +187,7 @@ Sistema {{session('client')['email']}}
     function reorderProducts(){
         $(".product").each(function( i ) {
             $(this).find("[cat]").each( function (c) {
-                this.name = "pdts["+i+"]['"+$(this).attr("cat")+"']";
+                this.name = "products["+i+"]["+$(this).attr("cat")+"]";
             });
         });
     }
@@ -194,8 +198,28 @@ Sistema {{session('client')['email']}}
             reorderProducts();
         }
     }
+    
     window.onbeforeunload = function(e) {
         return '';
     };
+
+    function autofill(){
+        for (let index = 0; index < 4; index++) {
+            addProduct();
+        }
+        $("input").each(function (i) {
+            try {
+                if($(this).val() == ""){
+                    $(this).val(this.type == "number" ? 0 : i+"-"+this.placeholder);
+                }
+            } catch (error) {}
+        });
+        $("textarea").each(function (i) {
+            try {
+                $(this).text(i+"-"+this.placeholder);
+            } catch (error) {}
+        });
+    }
+    autofill();
   </script>
 @endsection
