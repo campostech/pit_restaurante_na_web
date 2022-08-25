@@ -42,7 +42,17 @@
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
+    <script>
+        function sendWhatsapp(msg) {
+            let url = "https://api.whatsapp.com/send/?phone=+55"+"{{$phone}}".replace(/\D/g, "")+"&text="+encodeURI(msg);    
+            window.open(url, '_blank');
+        }
+        function buyMessage(element){
+            let parent = element.parentNode;
+            let msg = "Olá {{$name}}!\n\nGostaria do "+parent.getElementsByClassName("name")[0].innerHTML+"\nVi que custa "+parent.getElementsByClassName("price")[0].innerHTML;
+            sendWhatsapp(msg);
+        }
+    </script>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="#">{{$name}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -91,29 +101,29 @@
     <section class="bg-menu bg-section" id="menu">
         <div class="container-fluid">
             <h1 class="container-h1">Menu</h1>
-            <div class="row">
-
-                <!-- Nav pills -->
-                <ul class="nav nav-pills" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="pill" href="#breakfast">Breakfast</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#lunch">Lunch</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#dinner">Dinner</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#dessert">Dessert</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#salads">Salads</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#drinks">Drinks</a>
-                    </li>
-                </ul>
+            <div class="justify-content-center col-md-12 row border pt-4" id="products">
+                <div class="row mb-4 justify-content-center col-md-12">
+                    <div class="col-md-3 p-0 menu-cat active">
+                        <a class="col-md-12 m-0 btn" cat="*" onclick="clickMenu(event.target)">Todos</a>
+                    </div>
+                    @foreach ($categories as $category)
+                    <div class="col-md-3 p-0 menu-cat">
+                        <a class="col-md-12 m-0 btn" cat="{{$category}}" onclick="clickMenu(event.target)">{{$category}}</a>
+                    </div>
+                    @endforeach
+                </div>
+                @foreach ($products as $p)
+                <div class="col-md-4 pb-4 product" cat="{{$p["category"]}}">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <strong><p class="card-title w-100 name">{{$p["name"]}}</p></strong>
+                            <cite class="card-text w-100 mb-3">{{$p["description"]}}</cite>
+                            <p class="card-title price">R${{$p["price"]}}</p>
+                            <a class="btn btn-success text-light mb-0" onclick="buyMessage(event.target)">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -145,7 +155,7 @@
                     <p>{{$effort}}</p>
                 </div>
             </div>
-            <a href="#contact" class="btn">Contate-Nos</a>
+            <button onclick="sendWhatsapp('Olá {{$name}}!\nVi o site de vocês e gostaria de entrar em contato!')" class="btn">Contate-Nos</button>
         </div>
     </section>
 
@@ -184,7 +194,7 @@
         </div>
     </section>
 
-    <section class="bg-contact bg-section" id="contact">
+    <section class="bg-contact bg-section mb-4" id="contact">
         <div class="container-fluid">
             <h1 class="container-h1">Contate-Nos</h1>
             <div class="row slideanim justify-content-center text-center">

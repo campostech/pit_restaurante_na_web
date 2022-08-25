@@ -174,7 +174,7 @@ Sistema {{session('client')['email']}}
         `<div class="col-md-4 pb-4 product">
             <div class="card">
                 <div class="card-body text-center">
-                    <input class="card-title" cat="nome" placeholder="Nome"  required/>
+                    <input class="card-title" cat="name" placeholder="Nome"  required/>
                     <textarea class="card-text w-100 mb-3" cat="description" required placeholder="Descrição do Produto"></textarea>
                     <input type="number" class="card-title" cat="price" placeholder="Preço"  required/>
                     <input class="card-title" cat="category" placeholder="Categoria"  required/>
@@ -205,7 +205,7 @@ Sistema {{session('client')['email']}}
     window.onbeforeunload = function(e) {
         return '';
     };
-
+    
     function autofill(){
         for (let index = 0; index < 4; index++) {
             addProduct();
@@ -213,7 +213,7 @@ Sistema {{session('client')['email']}}
         $("input").each(function (i) {
             try {
                 if($(this).val() == ""){
-                    $(this).val(this.type == "number" ? 0 : i+"-"+this.placeholder);
+                    $(this).val(this.type == "number" ? i : i+"-"+this.placeholder);
                 }
             } catch (error) {}
         });

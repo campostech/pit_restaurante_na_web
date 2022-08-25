@@ -67,4 +67,16 @@ $(document).ready(function() {
         }, 500);
     });
 
-})
+});
+
+function clickMenu(evt) {
+    $(".menu-cat").removeClass("active");;
+    $(evt).parent().addClass("active");
+    let cat = $(evt).attr("cat");
+    if (cat == "*") {
+        $(".product").show();
+    } else {
+        $(".product").hide();
+        $("[cat='" + $(evt).attr("cat") + "']").show();
+    }
+}

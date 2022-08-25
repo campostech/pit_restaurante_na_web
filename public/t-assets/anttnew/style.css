@@ -74,7 +74,6 @@ textarea {
 
 section {
     align-items: center;
-    padding: 50px 60px;
 }
 
 .bg-section h2 {
@@ -795,5 +794,16 @@ p.first::first-letter {
 }
 
 #footer a {
+    color: white;
+}
+
+.menu-cat a {
+    background: white;
+    color: #182c39;
+    border: 1px solid;
+}
+
+.menu-cat.active a {
+    background: #182c39;
     color: white;
 }

@@ -13,7 +13,7 @@
                         </a>
                     </div>
                     <div class="form-group">
-                        <input id="email" name="email" class="form-control mb-0" type="text" placeholder="Enter Email" required="" aria-required="true">
+                        <input id="email" name="email" class="form-control mb-0" type="text" placeholder="exemplo@email.com" required="" aria-required="true">
                     </div>
 
                     <div class="form-group text-right">                      
