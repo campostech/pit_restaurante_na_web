@@ -156,6 +156,7 @@
             <button class="btn btn-secondary btn-lg btn-block col-md-6 py-4" type="button" onclick="preview()">Visualizar</button>
             <button class="btn btn-primary btn-lg btn-block col-md-6 m-0 py-4" type="submit">Gerar</button>
         </div>
+        <cite>Verifique se todos os dados foram preenchidos para gerar o site</cite>
       </form>
     </div>
   </div>
