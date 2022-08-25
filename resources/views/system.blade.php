@@ -98,7 +98,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="products">Products</label>
+            <label for="products">Produtos</label>
             <button class="btn btn-success m-2" type="button" onclick="addProduct()">+</button>
             <div class="justify-content-center row border pt-4" id="products"></div>
           </div>
