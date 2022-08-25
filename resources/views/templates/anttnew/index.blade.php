@@ -9,7 +9,7 @@
     <meta name="description" content="{{$name}}">
     <meta id="siteData" content="{{$siteData}}">
     <title>{{$name}}</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{$favicon}}"" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{$favicon}}" />
     <base href="{{asset('t-assets/anttnew')}}/">
 
 
@@ -260,7 +260,7 @@
     </footer>
 
     <div class="footer-copyright">
-        <p>&copy 2022 Tema feito por <a href="https://github.com/anttnew"> Anttnew</a> - Site Criado pelo <a href="{{route('system')}}">Restaurante na Web</a> / <a href="https://campostech.com.br/fundador">Lucas Campos</a></p>
+        <p>&copy {{now()->year}} Tema feito por <a href="https://github.com/anttnew"> Anttnew</a> - Site Criado pelo <a href="{{route('system')}}">Restaurante na Web</a> / <a href="https://campostech.com.br/fundador">Lucas Campos</a></p>
     </div>
 
     @include('templates.anttnew.script')

@@ -1,6 +1,16 @@
-Sistema {{session('client')['email']}}
+
 @extends('template')
 @section('content')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="navbar-nav mr-auto">
+      Usuário: {{session('client')['email']}}
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <a href="{{route('user.logout')}}" class="btn btn-outline-danger my-2 my-sm-0">Sair da Conta</a>
+    </div>
+  </div>
+</nav>
 <div id="modal" class="modal-window">
     <div>
         <a href="#" title="Fechar" class="modal-close btn-danger text-light">Fechar</a>
@@ -12,14 +22,19 @@ Sistema {{session('client')['email']}}
 </div>
 
 <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <img class="d-block mx-auto mb-4" src="assets/images/icon.png" alt="" width="72" height="72">
     <h2>Criação de Website Restaurante</h2>
     <p class="lead">Preencha os campos abaixo e monte o seu site com a sua marca, cores e detalhes</p>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <div class="col-md-12 text-right">
-        <label for="site" class="btn btn-warning">Carregar Site Gerado</label>
+      <div class="col-md-12 p-0 row">
+        <div class="col-md-6 text-left">
+          <a href="{{route('system.example')}}" target="_blank" class="btn btn-info">Ver Site de Exemplo</a>
+        </div>
+        <div class="col-md-6 text-right">
+          <label for="site" class="btn btn-warning">Carregar Site Gerado</label>
+        </div>
       </div>
       <input type="file" id="site" class="d-none" onchange="loadSite(this)" />
       <h4 class="mb-3">Informações do Cabeçalho</h4>
@@ -138,8 +153,8 @@ Sistema {{session('client')['email']}}
 
         <hr class="mb-4">
         <div class="row">
-            <button class="btn btn-secondary btn-lg btn-block col-md-6" type="button" onclick="preview()">Visualizar</button>
-            <button class="btn btn-primary btn-lg btn-block col-md-6 m-0" type="submit">Gerar</button>
+            <button class="btn btn-secondary btn-lg btn-block col-md-6 py-4" type="button" onclick="preview()">Visualizar</button>
+            <button class="btn btn-primary btn-lg btn-block col-md-6 m-0 py-4" type="submit">Gerar</button>
         </div>
       </form>
     </div>

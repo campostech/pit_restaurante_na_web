@@ -8,6 +8,10 @@ use App\Models\User;
 
 class SystemController extends Controller
 {
+    public function example(){
+        return view('example');
+    }
+
     public function create(){
         return view('system');
     }

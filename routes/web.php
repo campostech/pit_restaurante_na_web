@@ -17,3 +17,5 @@ Route::group(['middleware' => ClientMiddleware::class], function(){
     Route::post('/preview',  [SystemController::class, 'convertTemplate'])->name('system.preview');
 });
 
+Route::get('/exemplo',  [SystemController::class, 'example'])->name('system.example');
+
