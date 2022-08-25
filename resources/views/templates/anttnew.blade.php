@@ -44,7 +44,7 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <script>
         function sendWhatsapp(msg) {
-            let url = "https://api.whatsapp.com/send/?phone=+55"+"{{$phone}}".replace(/\D/g, "")+"&text="+encodeURI(msg);    
+            let url = "https://api.whatsapp.com/send/?phone=+55"+"{{$whatsapp}}".replace(/\D/g, "")+"&text="+encodeURI(msg);    
             window.open(url, '_blank');
         }
         function buyMessage(element){
