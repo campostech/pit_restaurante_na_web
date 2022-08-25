@@ -98,8 +98,8 @@ Sistema {{session('client')['email']}}
                 <input name="mainColor" type="color" id="mainColor" class="form-group"  required/>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="textColor" class="col-md-12">Cor Secundaria</label>
-                <input name="textColor" type="color" id="textColor" class="form-group"  required/>
+                <label for="secondColor" class="col-md-12">Cor Secundaria</label>
+                <input name="secondColor" type="color" id="secondColor" class="form-group"  required/>
             </div>
         </div>
 

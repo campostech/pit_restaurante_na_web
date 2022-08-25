@@ -48,7 +48,7 @@ hr {
 
 .btn {
     color: #fff;
-    background-color: #182c39;
+    background-color: var(--mainColor);
     margin: 20px auto;
     border-radius: 0;
     font-weight: 500;
@@ -57,9 +57,9 @@ hr {
 }
 
 .btn:hover {
-    color: #182c39;
+    color: var(--mainColor);
     background-color: transparent;
-    border: 1px solid #182c39;
+    border: 1px solid var(--mainColor);
 }
 
 .hr-h3s {
@@ -79,8 +79,8 @@ section {
 .bg-section h2 {
     font-family: 'Montserrat', sans-serif;
     text-transform: none;
-    color: #ffc266;
-    background-color: #182c39;
+    color: white;
+    background-color: var(--mainColor);
     margin: 50px 0;
     padding: 25px 10px;
     border-radius: 50px;
@@ -128,7 +128,7 @@ section {
 /*  ******* Header + Navigation ******* */
 
 .navbar {
-    background-color: #182c39;
+    background-color: var(--mainColor);
     border-color: rgb(51, 17, 0);
     border-color: rgba(51, 17, 0, 0.2);
     font-family: ;
@@ -138,13 +138,12 @@ section {
 }
 
 .navbar .navbar-brand {
-    color: #fff;
+    color: var(--secondColor);
     font-family: 'Leckerli One', cursive;
     font-weight: 500;
     text-transform: none;
     font-size: 25px;
     padding-left: 15px;
-    text-shadow: black 0.3em 0.3em 0.3em;
 }
 
 .navbar .navbar-brand:hover,
@@ -161,10 +160,9 @@ section {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
-    color: #fff !important;
+    color: var(--secondColor) !important;
     margin: auto 5px;
     font-family: 'Lato', sans-serif;
-    text-shadow: #222 0.3em 0.3em 0.3em;
 }
 
 .navbar .navbar-nav>li>a:hover,
@@ -328,7 +326,7 @@ p.first::first-letter {
 }
 
 #menu .nav-pills {
-    background-color: #182c39;
+    background-color: var(--mainColor);
     border-color: transparent;
     font-weight: 500;
     color: #000;
@@ -359,7 +357,7 @@ p.first::first-letter {
 }
 
 #menu .hr-menu {
-    border: 2px solid #182c39;
+    border: 2px solid var(--mainColor);
     width: 100%;
 }
 
@@ -387,7 +385,7 @@ p.first::first-letter {
 
 #menu .list-group-item h4 {
     text-align: left;
-    color: #182c39;
+    color: var(--mainColor);
     text-transform: none;
     font-size: 18px;
 }
@@ -425,15 +423,15 @@ p.first::first-letter {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 8px solid #182c39;
+    border: 8px solid var(--mainColor);
     text-align: center;
     display: inline-block;
     padding: 10px;
-    color: #182c39;
+    color: var(--mainColor);
 }
 
 #service .service-round i {
-    color: #182c39;
+    color: var(--mainColor);
 }
 
 #service h4 {
@@ -458,7 +456,7 @@ p.first::first-letter {
 #gallery h3 {
     font-family: 'Lato', sans-serif;
     text-transform: none;
-    color: #182c39;
+    color: var(--mainColor);
     margin: 50px auto 10px auto;
     font-weight: 700;
 }
@@ -507,7 +505,7 @@ p.first::first-letter {
 
 #gallery .more-img {
     margin: 0 80px;
-    background-color: #182c39;
+    background-color: var(--mainColor);
 }
 
 #gallery .more-img .to-gallery {
@@ -546,7 +544,7 @@ p.first::first-letter {
 #staff h3 {
     font-family: 'Lato', sans-serif;
     text-transform: none;
-    color: #182c39;
+    color: var(--mainColor);
     margin: 50px auto 10px auto;
 }
 
@@ -575,13 +573,13 @@ p.first::first-letter {
 /* ******* Testimonials ******* */
 
 #testimonials .hr-testimonials {
-    border: 1px solid #182c39;
+    border: 1px solid var(--mainColor);
     width: 50%;
     margin: 0 auto 35px auto;
 }
 
 #testimonials h3 {
-    color: #182c39;
+    color: var(--mainColor);
     margin: 40px auto;
 }
 
@@ -591,7 +589,7 @@ p.first::first-letter {
 }
 
 #testimonials .carousel-indicators li {
-    border: 2px solid #182c39;
+    border: 2px solid var(--mainColor);
     background-color: #fff;
     height: 10px;
     width: 10px;
@@ -600,7 +598,7 @@ p.first::first-letter {
 
 #testimonials .carousel-indicators li.active {
     border-color: #fff;
-    background-color: #182c39;
+    background-color: var(--mainColor);
 }
 
 #testimonials .carousel-item h4 {
@@ -635,17 +633,17 @@ p.first::first-letter {
 #contact .contact-buttons input,
 #contact .contact-buttons input:focus {
     color: #fff;
-    background-color: #182c39;
+    background-color: var(--mainColor);
     margin: 20px auto 40px auto;
     border-radius: 0;
     font-weight: 500;
     padding: 10px;
-    border: 1px solid #182c39;
+    border: 1px solid var(--mainColor);
     cursor: pointer;
 }
 
 #contact .contact-buttons input:hover {
-    color: #182c39;
+    color: var(--mainColor);
     background-color: #fff;
 }
 
@@ -654,18 +652,18 @@ p.first::first-letter {
 }
 
 #contact .left-box {
-    background-color: #182c39;
+    background-color: var(--mainColor);
     margin: 0 20px;
     font-size: 15px;
     text-transform: none;
     line-height: 1.8em;
     font-weight: 500;
     padding: 30px 50px;
-    color: #fff;
+    color: var(--secondColor);
 }
 
 #contact .left-box .span-contact {
-    color: #ffc266;
+    color: var(--secondColor);
     font-weight: 700;
     font-size: 17px;
 }
@@ -679,8 +677,8 @@ p.first::first-letter {
 /* ***** Footer ***** */
 
 #footer {
-    background-color: #182c39;
-    color: white;
+    background-color: var(--mainColor);
+    color: var(--secondColor) !important;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -692,7 +690,7 @@ p.first::first-letter {
 
 #footer h5 {
     font-size: 18px;
-    color: white;
+    color: var(--secondColor);
     margin-top: 40px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -716,8 +714,8 @@ p.first::first-letter {
 #footer .footer-items .fa {
     font-size: 17px;
     margin-bottom: 5px;
-    background-color: white;
-    color: #182c39;
+    background-color: var(--secondColor);
+    color: var(--mainColor);
     border-radius: 50%;
     padding-bottom: 25px;
     height: 30px;
@@ -738,7 +736,7 @@ p.first::first-letter {
 #footer .fa-instagram:hover {
     border: 1px solid #fff;
     color: #fff;
-    background-color: #182c39;
+    background-color: var(--mainColor);
 }
 
 .footer-copyright {
@@ -756,7 +754,7 @@ p.first::first-letter {
 #footer .hr-foot {
     width: 80%;
     margin: 10px auto;
-    border: 1px solid #fff;
+    border: 1px solid var(--secondColor);
 }
 
 #footer .to-top {
@@ -789,21 +787,25 @@ p.first::first-letter {
 
 #footer textarea {
     background: transparent;
-    color: white;
+    color: var(--secondColor);
     border: 0px;
 }
 
 #footer a {
-    color: white;
+    color: var(--secondColor);
 }
 
 .menu-cat a {
-    background: white;
-    color: #182c39;
-    border: 1px solid;
+    background: var(--secondColor);
+    color: var(--mainColor) !important;
+    border: 1px solid var(--mainColor);
 }
 
 .menu-cat.active a {
-    background: #182c39;
-    color: white;
+    background: var(--mainColor);
+    color: var(--secondColor) !important;
+}
+
+.text-second {
+    color: var(--secondColor) !important;
 }

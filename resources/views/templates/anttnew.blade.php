@@ -38,7 +38,12 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <style>
+        :root{
+            --mainColor: {{$mainColor}};
+            --secondColor: {{$secondColor}};
+        }
+    </style>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -53,8 +58,8 @@
             sendWhatsapp(msg);
         }
     </script>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">{{$name}}</a>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <a class="navbar-brand" href="#home">{{$name}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -76,7 +81,7 @@
         </div>
     </nav>
 
-    <div class="jumbotron" style="background-image: url('{{$banner}}')">
+    <div class="jumbotron" id="home" style="background-image: url('{{$banner}}')">
         <div class="container-fluid">
             <div class="header-content-inner">
             </div>
@@ -119,7 +124,7 @@
                             <strong><p class="card-title w-100 name">{{$p["name"]}}</p></strong>
                             <cite class="card-text w-100 mb-3">{{$p["description"]}}</cite>
                             <p class="card-title price">R${{$p["price"]}}</p>
-                            <a class="btn btn-success text-light mb-0" onclick="buyMessage(event.target)">Comprar</a>
+                            <a class="btn btn-success text-second mb-0" onclick="buyMessage(event.target)">Comprar</a>
                         </div>
                     </div>
                 </div>

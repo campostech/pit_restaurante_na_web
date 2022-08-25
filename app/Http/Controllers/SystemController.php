@@ -32,7 +32,7 @@ class SystemController extends Controller
             "products" => [],
             "favicon" => "",
             "mainColor" => "#fff",
-            "textColor" => "#000",
+            "secondColor" => "#000",
             "info" => "",
             "hours" => "",
             "opinions" => [],
