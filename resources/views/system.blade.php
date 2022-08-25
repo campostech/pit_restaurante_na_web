@@ -17,7 +17,11 @@ Sistema {{session('client')['email']}}
     <p class="lead">Preencha os campos abaixo e monte o seu site com a sua marca, cores e detalhes</p>
   </div>
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10">
+      <div class="col-md-12 text-right">
+        <label for="site" class="btn btn-warning">Carregar Site Gerado</label>
+      </div>
+      <input type="file" id="site" class="d-none" onchange="loadSite(this)" />
       <h4 class="mb-3">Informações do Cabeçalho</h4>
       <form id="form" class="needs-validation" method="POST" action="{{route('system.generate')}}">
         @csrf
@@ -157,23 +161,27 @@ Sistema {{session('client')['email']}}
             document.getElementsByName(this.id)[0].value = data;
         });
     }
+    
     let inputsFile = document.querySelectorAll("input[type=file]");
     for (let index = 0; index < inputsFile.length; index++) {
         const element = inputsFile[index];
-        element.addEventListener("change", readFile);
-        element.parentNode.querySelector("a[href='#modal']").addEventListener("click", previewImg);
+        if(element.id != "site"){
+          element.addEventListener("change", readFile);
+          element.parentNode.querySelector("a[href='#modal']").addEventListener("click", previewImg);
+        }
     }
 
-    function addProduct() {
+    function addProduct(data) {
+        let product = data || [];
         let model = 
         `<div class="col-md-4 pb-4 product">
             <div class="card">
                 <div class="card-body text-center">
-                    <input class="card-title" cat="name" placeholder="Nome"  required/>
-                    <textarea class="card-text w-100 mb-3" cat="description" required placeholder="Descrição do Produto"></textarea>
-                    <input type="number" class="card-title" cat="price" placeholder="Preço"  required/>
-                    <input class="card-title" cat="category" placeholder="Categoria"  required/>
-                    <button type="button" onclick="removeProduct(event.target)" class="btn btn-danger">Remover</button>
+                  <input class="card-title" cat="name" value="${product.name || ""}" placeholder="Nome" required/>
+                  <input type="number" class="card-title" cat="price" value="${product.price || ""}" placeholder="Preço"  required/>
+                  <input class="card-title" cat="category" value="${product.category || ""}" placeholder="Categoria"  required/>
+                  <textarea class="card-text w-100 mb-3" cat="description" required placeholder="Descrição do Produto">${product.description || ""}</textarea>
+                  <button type="button" onclick="removeProduct(event.target)" class="btn btn-danger">Remover</button>
                 </div>
             </div>
         </div>`;
@@ -218,7 +226,7 @@ Sistema {{session('client')['email']}}
             } catch (error) {}
         });
     }
-    autofill();
+    //autofill();
     
     function preview() {
         let pForm = $('#form').clone();
@@ -226,11 +234,58 @@ Sistema {{session('client')['email']}}
             $(this).removeAttr("required");
         });
         pForm.attr("id", "previewForm");
+        pForm.attr("action", "{{route('system.preview')}}");
         pForm.attr("target", "print_popup");
         pForm.attr("onsubmit", "window.open('about:blank','print_popup','width=1000,height=800');");
         $("body").append(pForm);
         $("#previewForm").submit();
         $("#previewForm").remove();
+    }
+
+    
+    function loadSite(evt) {
+      if (!evt.files || !evt.files[0]) return;
+      let files = evt.files;
+      
+      let f = files[0];
+      let reader = new FileReader();
+
+      reader.onload = (function(theFile) {
+        return function(e) {
+          var siteHTML = document.createElement('div');
+          siteHTML.innerHTML = e.target.result;
+          setSiteValues(JSON.parse(atob($(siteHTML).find("#siteData").attr("content"))));  
+        };
+      })(f);
+
+      reader.readAsText(f);
+    }
+
+    function setSiteValues(obj){
+      console.log(123, obj, obj.products);
+      $("input").each(function () {
+          try {
+            $(this).val(obj[this.name]);
+            if($(this).attr("type") == "file"){
+              document.getElementById(this.id+ "-img").src = obj[this.id];
+            }
+          } catch (error) {}
+      });
+      $("textarea").each(function () {
+        try {$(this).html(obj[this.name]);
+        } catch (error) {}
+      });
+      $("#products").html("");
+      for (let i = 0; i < obj.products.length; i++) {
+        addProduct(obj.products[i]);
+      }
+      for (let i = 0; i < obj.opinions.length; i++) {
+        const opinion = obj.opinions[i];
+        try {
+          $("input[name='opinions["+i+"][n]']").val(opinion.n);
+          $("input[name='opinions["+i+"][o]']").val(opinion.o);
+        } catch (error) {}
+      }
     }
   </script>
 @endsection

@@ -6,9 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Northstreet Restaurant">
-    <meta name="author" content="A.K.">
-
+    <meta name="description" content="{{$name}}">
+    <meta id="siteData" content="{{$siteData}}">
     <title>{{$name}}</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{$favicon}}"" />
     <base href="{{asset('t-assets/anttnew')}}/">
@@ -34,8 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" type="text/css">
+    @include('templates.anttnew.style')
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -109,11 +107,11 @@
             <div class="justify-content-center col-md-12 row border pt-4" id="products">
                 <div class="row mb-4 justify-content-center col-md-12">
                     <div class="col-md-3 p-0 menu-cat active">
-                        <a class="col-md-12 m-0 btn" cat="*" onclick="clickMenu(event.target)">Todos</a>
+                        <a class="col-md-12 m-0 btn" cat="*" onclick="clickMenu(event.target)">TODOS</a>
                     </div>
                     @foreach ($categories as $category)
                     <div class="col-md-3 p-0 menu-cat">
-                        <a class="col-md-12 m-0 btn" cat="{{$category}}" onclick="clickMenu(event.target)">{{$category}}</a>
+                        <a class="col-md-12 m-0 btn" cat="{{$category}}" onclick="clickMenu(event.target)">{{strtoupper($category)}}</a>
                     </div>
                     @endforeach
                 </div>
@@ -208,15 +206,15 @@
                         <address class="contact">
                             <span class="span-contact">Telefone:</span>
                             <br>
-                            {{$phone}}
+                            <a class="text-second" href="tel:{{$phone}}">{{$phone}}</a>
                             <br> 
                             <span class="span-contact">Email:</span> 
                             <br>
-                            {{$email}}
+                            <a class="text-second" href="mailto:{{$email}}">{{$email}}</a>
                             <br>
                             <span class="span-contact">Endereço:</span>  
                             <br>
-                            {{$address}}
+                            <a class="text-second" href="{{$maps}}">{{$address}}</a>
                         </address>
                     </div>
                 </div>
@@ -240,7 +238,7 @@
                     <hr class="hr-foot">
                     <div class="footer-items">
                         <address>
-                                {{$address}}
+                                <a href="{{$maps}}">{{$address}}</a>
                                 <br>
                                 <a href="tel:{{$phone}}"><i class="fa fa-phone address"></i>{{$phone}}</a>
                                 <br>
@@ -251,7 +249,7 @@
                 <div class="col-md-4 col-sm-4 text-center">
                     <h5>Funcionamento</h5>
                     <hr class="hr-foot">
-                    <textarea class="col-md-8" readonly>{{$hours}}</textarea>
+                    <div class="col-md-12">{!! str_replace("\n","<br>",strip_tags($hours)) !!}</div>
                 </div>
             </div>
         </div>
@@ -262,10 +260,10 @@
     </footer>
 
     <div class="footer-copyright">
-        <p>&copy 2022 Tema feito por <a href="https://github.com/anttnew"> Anttnew</a> - Site Criado pelo <a href="">Restaurante na Web</a> / <a href="">Lucas Campos</a></p>
+        <p>&copy 2022 Tema feito por <a href="https://github.com/anttnew"> Anttnew</a> - Site Criado pelo <a href="{{route('system')}}">Restaurante na Web</a> / <a href="https://campostech.com.br/fundador">Lucas Campos</a></p>
     </div>
 
-    <script src="script.js"></script>
+    @include('templates.anttnew.script')
 
 </body>
 

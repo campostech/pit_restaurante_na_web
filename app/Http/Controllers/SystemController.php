@@ -13,17 +13,21 @@ class SystemController extends Controller
     }
 
     public function generate(Request $request){
+        $request["siteData"] = true;
         $download = $this->convertTemplate($request)->render();
         return view("download", compact("download"));
     }
 
     public function convertTemplate(Request $request){
-        $model = array("name" => "", "banner" => "", "email" => "", "phone" => "", "whatsapp" => "", "address" => "", "maps" => "", "fundation" => "", "objective" => "", "effort" => "", "about" => "", "products" => [], "favicon" => "", "mainColor" => "#fff", "secondColor" => "#000", "info" => "", "hours" => "", "opinions" => [], "categories" => []);
+        $model = array("name" => "", "banner" => "", "email" => "", "phone" => "", "whatsapp" => "", "address" => "", "maps" => "", "fundation" => "", "objective" => "", "effort" => "", "about" => "", "products" => [], "favicon" => "", "mainColor" => "#fff", "secondColor" => "#000", "info" => "", "hours" => "", "opinions" => [], "categories" => [], "siteData" => "");
 
         foreach ($model as $key => $value) {
             if(isset($request->{$key})){
                 $model[$key] = $request->{$key};
             }
+        }
+        if($model["siteData"]){
+            $model["siteData"] = base64_encode(json_encode($model));
         }
 
         if(isset($request->products) && count($request->products) > 1){
@@ -34,6 +38,6 @@ class SystemController extends Controller
             }
         }
 
-        return view('templates.anttnew', $model);
+        return view('templates.anttnew.index', $model);
     }
 }
