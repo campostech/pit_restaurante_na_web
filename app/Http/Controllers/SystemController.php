@@ -13,31 +13,12 @@ class SystemController extends Controller
     }
 
     public function generate(Request $request){
-        return $this->convertTemplate($request)->render();
+        $download = $this->convertTemplate($request)->render();
+        return view("download", compact("download"));
     }
 
     public function convertTemplate(Request $request){
-        $model = array(
-            "name" => "",
-            "banner" => "",
-            "email" => "",
-            "phone" => "",
-            "whatsapp" => "",
-            "address" => "",
-            "maps" => "",
-            "fundation" => "",
-            "objective" => "",
-            "effort" => "",
-            "about" => "",
-            "products" => [],
-            "favicon" => "",
-            "mainColor" => "#fff",
-            "secondColor" => "#000",
-            "info" => "",
-            "hours" => "",
-            "opinions" => [],
-            "categories" => [],
-        );
+        $model = array("name" => "", "banner" => "", "email" => "", "phone" => "", "whatsapp" => "", "address" => "", "maps" => "", "fundation" => "", "objective" => "", "effort" => "", "about" => "", "products" => [], "favicon" => "", "mainColor" => "#fff", "secondColor" => "#000", "info" => "", "hours" => "", "opinions" => [], "categories" => []);
 
         foreach ($model as $key => $value) {
             if(isset($request->{$key})){

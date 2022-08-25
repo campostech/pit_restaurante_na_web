@@ -133,11 +133,6 @@ Sistema {{session('client')['email']}}
         </div>
 
         <hr class="mb-4">
-        {{-- <div class="custom-control custom-checkbox">
-          <input name="check" type="checkbox" class="custom-control-input" id="check" required>
-          <label class="custom-control-label" for="check">Concordo com todos os term</label>
-        </div>
-        <hr class="mb-4"> --}}
         <div class="row">
             <button class="btn btn-secondary btn-lg btn-block col-md-6" type="button" onclick="preview()">Visualizar</button>
             <button class="btn btn-primary btn-lg btn-block col-md-6 m-0" type="submit">Gerar</button>
