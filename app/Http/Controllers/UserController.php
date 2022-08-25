@@ -25,7 +25,7 @@ class UserController extends Controller
             'password' => $request->password
         ]);
 
-        return $this->signin($request);
+        return redirect(route('user.login'));
     }
 
     public function login(){
